@@ -1,4 +1,4 @@
-import { MainRoutes } from "./route";
+import { AppRoutes } from "./route";
 import { BrowserRouter } from "react-router-dom";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { ConfigProvider } from "antd";
@@ -6,7 +6,7 @@ import { ConfigProvider } from "antd";
 export const App = () => {
   return (
     <ConfigProvider
-      theme={{
+      /* theme={{
         token: {
           // Seed Token
           colorPrimary: "#00b96b",
@@ -15,11 +15,11 @@ export const App = () => {
           // Alias Token
           colorBgContainer: "#f6ffed",
         },
-      }}
+      }} */
     >
       <ErrorBoundary>
         <BrowserRouter>
-          <MainRoutes />
+          <AppRoutes />
         </BrowserRouter>
       </ErrorBoundary>
     </ConfigProvider>

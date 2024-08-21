@@ -1,2 +1,2 @@
-import { MainRoutes } from "./MainRoutes";
-export { MainRoutes };
+import { AppRoutes } from "./AppRoutes";
+export { AppRoutes };
