@@ -4,12 +4,17 @@ require("dotenv").config();
 const https = require("https");
 const fs = require(`fs`);
 
+const authRouter = require("./routes/auth.routes");
+
+
 const PORT = 5001;
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/api", authRouter);
 
 app.listen(PORT, () =>
   console.log("server start on ->", `http://localhost:${PORT}`)
