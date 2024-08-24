@@ -2,7 +2,14 @@
 const { User } = require("../database/models");
 
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
+const { secret } = require("../config/secret");
+
+const generateAccessToken = (email) => {
+  const payload = { email };
+  return jwt.sign(payload, secret, { expiresIn: "3h" });
+};
 class AuthController {
   async registration(req, res) {
     try {
@@ -27,10 +34,12 @@ class AuthController {
 
       await User.create({
         userName,
-        password:hashPassword,
+        password: hashPassword,
       });
 
-      return res.json({ message: `Пользователь успешно зарегистрирован ${hashPassword}` });
+      return res.json({
+        message: `Пользователь успешно зарегистрирован ${hashPassword}`,
+      });
     } catch (error) {}
   }
 
@@ -38,21 +47,21 @@ class AuthController {
     try {
       const { userName, password } = req.body;
 
-      const findUser = await User.findOne({ where: { userName } });
+      const user = await User.findOne({ where: { userName } });
 
-      if (!findUser) {
+      if (!user) {
         return res
           .status(400)
           .json({ message: "Пользователь с таким именем не найден" });
       }
 
-      const validatePassword = bcrypt.compareSync(password, findUser.password);
+      const validatePassword = bcrypt.compareSync(password, user.password);
 
       if (!validatePassword) {
         return res.status(400).json({ message: "Неверный пароль" });
       }
-
-      return res.json(findUser);
+      const token = generateAccessToken(user.userName);
+      return res.json(token);
     } catch (error) {
       res.status(500).json({
         message: error,
