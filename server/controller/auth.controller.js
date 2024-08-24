@@ -25,7 +25,7 @@ class AuthController {
     } catch (error) {}
   }
 
-  async login() {
+  async login(req, res) {
     try {
       const allUsers = await User.findAndCountAll({
         order: [["createDate", "DESC"]],
@@ -34,7 +34,7 @@ class AuthController {
       return res.json(allUsers);
     } catch (error) {
       res.status(500).json({
-        message: err,
+        message: error,
       });
     }
   }

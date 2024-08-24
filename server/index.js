@@ -6,7 +6,6 @@ const fs = require(`fs`);
 
 const authRouter = require("./routes/auth.routes");
 
-
 const PORT = 5001;
 
 const app = express();
