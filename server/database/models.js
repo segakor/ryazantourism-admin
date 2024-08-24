@@ -7,7 +7,7 @@ const User = sequelize.define(
     userName: { type: DataTypes.STRING, primaryKey: true, unique: true },
     password: { type: DataTypes.STRING },
   },
-  { underscored: true, timestamps: false, }
+  { underscored: true, /* timestamps: false,  */}
 );
 
 module.exports = {
