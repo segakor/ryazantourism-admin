@@ -27,7 +27,7 @@ class AuthController {
 
       await User.create({
         userName,
-        hashPassword,
+        password:hashPassword,
       });
 
       return res.json({ message: `Пользователь успешно зарегистрирован ${hashPassword}` });
