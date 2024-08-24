@@ -1,0 +1,1 @@
+create TABLE users(user_name VARCHAR(50),password VARCHAR(50));

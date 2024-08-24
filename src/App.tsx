@@ -9,7 +9,7 @@ export const App = () => {
       /* theme={{
         token: {
           // Seed Token
-          colorPrimary: "#00b96b",
+          colorPrimary: "#00B96B",
           borderRadius: 8,
 
           // Alias Token

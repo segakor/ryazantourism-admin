@@ -21,8 +21,9 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-amber-200 h-screen">
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-amber-100 h-screen">
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-lg bg-white p-10 shadow-md">
+        <div className="font-medium text-l mb-3">Вход в админ панель</div>
         <Form
           name="login"
           initialValues={{ remember: true }}
@@ -32,16 +33,22 @@ export const LoginPage = () => {
         >
           <Form.Item<FieldType>
             name="username"
-            rules={[{ required: true, message: "Обязательное поле" }]}
+            rules={[
+              { required: true, message: "Заполните обязательное поле" },
+              {
+                type: "email",
+                message: "Некорректный email",
+              },
+            ]}
           >
-            <Input placeholder="Email"/>
+            <Input placeholder="Email" />
           </Form.Item>
 
           <Form.Item<FieldType>
             name="password"
-            rules={[{ required: true, message: "Обязательное поле" }]}
+            rules={[{ required: true, message: "Заполните обязательное поле" }]}
           >
-            <Input.Password placeholder="Пароль"/>
+            <Input.Password placeholder="Пароль" />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" block>

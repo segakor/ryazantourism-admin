@@ -1,10 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CKEditor } from "ckeditor4-react";
 
 type Props = {
   initData: string;
+  onChange: (e: string) => void;
 };
 
-export const Editor = ({ initData }: Props) => {
+export const Editor = ({ initData, onChange }: Props) => {
+  
+  const inputHandler = (value:any) => {
+    onChange(value.editor.getData());
+  };
+
   return (
     <div className="App">
       <CKEditor
@@ -18,8 +25,8 @@ export const Editor = ({ initData }: Props) => {
               "BulletedList",
               "-",
               "Link",
-              "-",
-              "Image",
+              /*  "-",
+              "Image", */
               "-",
               "Table",
             ],
@@ -34,7 +41,7 @@ export const Editor = ({ initData }: Props) => {
             "image:info;image:Link;image:advanced;link:upload;link:advanced",
         }}
         initData={initData}
-        onChange={(e)=>console.log(e)}
+        onChange={inputHandler}
         /*  onInstanceReady={() => {
           alert("Editor is ready!");
         }} */

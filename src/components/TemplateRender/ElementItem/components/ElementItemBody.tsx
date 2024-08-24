@@ -1,7 +1,5 @@
-import { Input, /* Tooltip */ Form } from "antd";
 import { TTemplate } from "../../../../types/types";
-import Editor from "../../../Editor";
-/* import { QuestionCircleFilled } from "@ant-design/icons"; */
+import { ElementItemBodyEdit } from "./ElementItemBodyEdit";
 
 type Props = {
   item: TTemplate;
@@ -12,22 +10,7 @@ export const ElementItemBody = ({ item, isEdit }: Props) => {
   /* const { title, text, srcImg } = item; */
 
   if (isEdit) {
-    return (
-      <div className="grid gap-3 mb-3">
-        <Form name="edit" layout="vertical" initialValues={item}>
-          <Form.Item label="Заголовок" name="title">
-            <Input placeholder="Заголовок" />
-          </Form.Item>
-          <Form.Item label="Текст" name="text">
-            {/* <Input placeholder="Текст" /> */}
-            <Editor initData={item.text} />
-          </Form.Item>
-          <Form.Item label="Ссылка на изображение" name="srcImg">
-            <Input placeholder="Ссылка на изображение" />
-          </Form.Item>
-        </Form>
-      </div>
-    );
+    return <ElementItemBodyEdit item={item} />;
   }
   return (
     <div className="grid gap-3 mb-3">
