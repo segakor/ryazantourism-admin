@@ -21,6 +21,8 @@ const NewsArt = sequelize.define(
   { underscored: true, freezeTableName: true }
 );
 
+//freezeTableName убирает s в название таблицы при инсерте
+
 module.exports = {
   User,
   NewsArt
