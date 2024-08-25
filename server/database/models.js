@@ -18,7 +18,7 @@ const NewsArt = sequelize.define(
     bodyText: { type: DataTypes.TEXT },
     imagePath: { type: DataTypes.STRING },
   },
-  { underscored: true }
+  { underscored: true, freezeTableName: true }
 );
 
 module.exports = {

@@ -1,4 +1,3 @@
-/* const { validationResult } = require("express-validator"); */
 const { User } = require("../database/models");
 
 const bcrypt = require("bcryptjs");
@@ -13,12 +12,6 @@ const generateAccessToken = (email) => {
 class AuthController {
   async registration(req, res) {
     try {
-      /* const errors = validationResult(req);
-      if (!errors.isEmpty) {
-        return res
-          .status(400)
-          .json({ message: "Ошибка при регистрации", errors });
-      } */
       const { userName, password } = req.body;
 
       const candidate = await User.findOne({ where: { userName } });
@@ -38,7 +31,7 @@ class AuthController {
       });
 
       return res.json({
-        message: `Пользователь успешно зарегистрирован ${hashPassword}`,
+        message: `Пользователь успешно зарегистрирован`,
       });
     } catch (error) {}
   }
