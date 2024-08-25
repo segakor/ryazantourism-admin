@@ -7,9 +7,21 @@ const User = sequelize.define(
     userName: { type: DataTypes.STRING, primaryKey: true, unique: true },
     password: { type: DataTypes.STRING },
   },
-  { underscored: true, /* timestamps: false,  */}
+  { underscored: true /* timestamps: false,  */ }
+);
+
+const NewsArt = sequelize.define(
+  "news_art",
+  {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    title: { type: DataTypes.STRING },
+    bodyText: { type: DataTypes.TEXT },
+    imagePath: { type: DataTypes.STRING },
+  },
+  { underscored: true }
 );
 
 module.exports = {
   User,
+  NewsArt
 };

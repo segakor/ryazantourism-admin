@@ -2,11 +2,12 @@ import { AppRoutes } from "./route";
 import { BrowserRouter } from "react-router-dom";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { ConfigProvider } from "antd";
+import { QueryClientProvider } from "./components/QueryClientProvider";
 
 export const App = () => {
   return (
     <ConfigProvider
-      /* theme={{
+    /* theme={{
         token: {
           // Seed Token
           colorPrimary: "#00B96B",
@@ -18,9 +19,11 @@ export const App = () => {
       }} */
     >
       <ErrorBoundary>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
+        <QueryClientProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </QueryClientProvider>
       </ErrorBoundary>
     </ConfigProvider>
   );

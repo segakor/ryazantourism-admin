@@ -1,6 +1,16 @@
-import axios from "axios"
+import axios from "axios";
 
-
-export const login = async ({ userName, password }: { userName: string; password: string }) => {
-  return (await axios.get(`http://79.174.85.156:5001/api/login`)).data;
+export const login = async ({
+  userName,
+  password,
+}: {
+  userName: string;
+  password: string;
+}) => {
+  return (
+    await axios.post<{ token: string }>(`http://79.174.85.156:5001/api/login`, {
+      userName,
+      password,
+    })
+  ).data;
 };

@@ -1,3 +1,5 @@
+import { AxiosError } from "axios";
+
 export enum ELEMENT_TYPE {
   LEAD_BLOCK = "LEAD_BLOCK",
   FACT_BLOCK = "FACT_BLOCK",
@@ -20,3 +22,12 @@ export type TTemplate = {
   text?: string;
   srcImg?: string;
 };
+
+
+//TODO: вынести в конфиг
+export interface Error {
+  message: string[];
+  statusCode: number;
+}
+
+export type TError = AxiosError<Error>;

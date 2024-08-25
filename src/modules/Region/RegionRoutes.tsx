@@ -80,8 +80,8 @@ export const RegionRoutes = () => {
               </Suspense>
             }
           />
-          <Route path="*" element={<Navigate replace to="/main" />} />
         </Route>
+        <Route path="region/*" element={<Navigate replace to="istoriya" />} />
       </Routes>
     </Suspense>
   );

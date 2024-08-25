@@ -1,38 +1,31 @@
 import type { FormProps } from "antd";
-import { Button, Form, Input } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Button, Form, Input, Layout } from "antd";
+import { useLogin } from "../../hooks";
 
 export const LoginPage = () => {
   type FieldType = {
-    username?: string;
-    password?: string;
+    userName: string;
+    password: string;
   };
 
-  const navigate = useNavigate();
+  const { isPending, mutate } = useLogin();
 
-  const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-    navigate("/main");
-  };
-
-  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
-    errorInfo
-  ) => {
-    console.log("Failed:", errorInfo);
+  const onFinish: FormProps<FieldType>["onFinish"] =  (values) => {
+    mutate(values);
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-amber-100 h-screen">
+    <Layout className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-amber-100 h-screen">
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-lg bg-white p-10 shadow-md">
         <div className="font-medium text-l mb-3">Вход в админ панель</div>
         <Form
           name="login"
           initialValues={{ remember: true }}
           onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           <Form.Item<FieldType>
-            name="username"
+            name="userName"
             rules={[
               { required: true, message: "Заполните обязательное поле" },
               {
@@ -51,12 +44,12 @@ export const LoginPage = () => {
             <Input.Password placeholder="Пароль" />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" block>
+            <Button type="primary" htmlType="submit" block loading={isPending}>
               Войти
             </Button>
           </Form.Item>
         </Form>
       </div>
-    </div>
+    </Layout>
   );
 };
