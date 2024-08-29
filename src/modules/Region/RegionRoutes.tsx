@@ -1,6 +1,7 @@
 import { Spin } from "antd";
 import { Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { PrivateRoute } from "../../components/PrivateRoute";
 
 export const RegionRoutes = () => {
   const Istoriya = lazy(() => import("./Istoriya"));
@@ -15,7 +16,7 @@ export const RegionRoutes = () => {
   return (
     <Suspense fallback={<Spin />}>
       <Routes>
-        <Route path="region">
+        <Route path="region" element={<PrivateRoute/>}>
           <Route
             path="istoriya"
             element={

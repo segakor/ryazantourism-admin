@@ -12,7 +12,7 @@ export const tokenService = {
   removeJwtToken() {
     localStorage.removeItem(JWT_TOKEN_KEY_NAME);
   },
-  setJwtToken(value: string) {
+  setJwtToken(value: { token: string }) {
     localStorage.setItem(JWT_TOKEN_KEY_NAME, JSON.stringify(value));
   },
 };

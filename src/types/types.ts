@@ -23,11 +23,14 @@ export type TTemplate = {
   srcImg?: string;
 };
 
-
 //TODO: вынести в конфиг
 export interface Error {
   message: string[];
-  statusCode: number;
 }
 
-export type TError = AxiosError<Error>;
+export type TError = AxiosError<{ data: { message: string } }>;
+
+export type TResponseTableData<T> = {
+  count: number;
+  rows: T;
+};

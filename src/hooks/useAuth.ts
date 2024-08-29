@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { tokenService } from "../service/tokenService";
 import { notification } from "antd";
-import { TError } from "../types/types";
 
 export const useLogin = () => {
   const navigate = useNavigate();
@@ -12,12 +12,13 @@ export const useLogin = () => {
     mutationFn: (params: { userName: string; password: string }) =>
       login(params),
     onSuccess: (data) => {
-      tokenService.setJwtToken(data.token);
+      tokenService.setJwtToken(data);
       navigate("/main");
     },
-    onError: (err: TError) => {
+    onError: (err: any) => {
+
       notification.error({
-        message: err?.response?.data.message,
+        message: err.data.message,
         duration: 3,
       });
       console.log(err);

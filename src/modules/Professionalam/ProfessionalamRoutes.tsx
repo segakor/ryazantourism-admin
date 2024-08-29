@@ -1,6 +1,7 @@
 import { Spin } from "antd";
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
+import { PrivateRoute } from "../../components/PrivateRoute";
 
 export const ProfessionalamRoutes = () => {
   const AgentstvoRazvitiyaTurizma = lazy(
@@ -13,7 +14,7 @@ export const ProfessionalamRoutes = () => {
   return (
     <Suspense fallback={<Spin />}>
       <Routes>
-        <Route path="professionalam">
+        <Route path="professionalam" element={<PrivateRoute/>}>
           <Route
             path="agentstvo-razvitiya-turizma"
             element={

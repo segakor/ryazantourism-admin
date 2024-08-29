@@ -74,7 +74,7 @@ export const menuItems = [
     label: "Профессионалам",
     children: [
       {
-        label: "Агенство развития туризма",
+        label: "Агентство развития туризма",
         key: "/professionalam/agentstvo-razvitiya-turizma",
       },
       { label: "База знаний", key: "/professionalam/baza-znanij" },
@@ -82,7 +82,7 @@ export const menuItems = [
         label: "Реестр туроператоров",
         key: "/professionalam/reestr-turoperatorov",
       },
-      { label: "Новости арт", key: "/professionalam/novosti-art" },
+      { label: "Новости АРТ", key: "/professionalam/novosti-art" },
     ],
   },
   {

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosClient } from "../config";
 
 export const login = async ({
   userName,
@@ -8,7 +8,7 @@ export const login = async ({
   password: string;
 }) => {
   return (
-    await axios.post<{ token: string }>(`http://79.174.85.156:5001/api/login`, {
+    await axiosClient.post<{ token: string }>(`http://79.174.85.156:5001/api/login`, {
       userName,
       password,
     })
